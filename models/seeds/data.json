@@ -1,0 +1,50 @@
+{
+  "records": [
+    {
+      "name": "教父牛排",
+      "category": "餐飲食品",
+      "date": "2021-01-31",
+      "amount": "4800"
+    },
+    {
+      "name": "電影: 神力女超人 1984",
+      "category": "休閒娛樂",
+      "date": "2021-02-31",
+      "amount": "500"
+    },
+    {
+      "name": "Uber",
+      "category": "交通出行",
+      "date": "2021-03-31",
+      "amount": "429"
+    },
+    {
+      "name": "爭鮮",
+      "category": "餐飲食品",
+      "date": "2021-04-31",
+      "amount": "600"
+    }
+  ],
+  "categories": [
+    {
+      "name": "家居物業",
+      "icon": "fas fa-home"
+    },
+    {
+      "name": "交通出行",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "name": "休閒娛樂",
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "name": "餐飲食品",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "name": "其他",
+      "icon": "fas fa-pen"
+    }
+  ]
+}
