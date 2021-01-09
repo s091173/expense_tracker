@@ -1,0 +1,56 @@
+<form action="/records" method="POST">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+
+      {{!-- title --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <label class="text-center mr-2" for="name">*必填欄位
+        </label>
+        <h4 class="text-center col-3 mr-2" for="name">請輸入你的支出</h4>
+      </div>
+
+      {{!-- name --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <label class="text-center mr-2" for="name">名稱*：
+        </label>
+        <input class="form-control col-3" type="text" name="name" id="name" required>
+      </div>
+
+      {{!-- date --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <label class="text-center mr-2" for="name">日期*：
+        </label>
+        <input class="form-control col-3" type="date" name="date" id="date" required>
+      </div>
+
+      {{!-- category --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <label class="text-center mr-2" for="category">類別*：</label>
+        <select class="col-3" name="category" id="category" required>
+          <option value="家居物業">家居物業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+
+      {{!-- amount --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <label class="text-center mr-2" for="name">金額*：
+        </label>
+        <input class="form-control col-3" type="number" name="amount" id="amount" required>
+      </div>
+
+      {{!-- submit button --}}
+      <div class="form-row col-12 justify-content-center mb-5">
+        <button type="submit" class="btn btn-dark">
+          新增
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</form>
