@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebars = require('handlebars')
+const methodOverride = require('method-override')
 // 載入 Record Model
 const Record = require('./models/record')
 // 引用 totalAmount function
@@ -32,7 +33,10 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(
+  bodyParser.urlencoded({ extended: true }),
+  methodOverride('_method')
+)
 
 // register helper
 handlebars.registerHelper('ifEqual', function (category, targetCategory, options) {
@@ -85,7 +89,7 @@ app.get('/records/:id/edit', (req, res) => {
 })
 
 // update route
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const { name, date, category, amount } = req.body
   const icon = generateIcon(category)
@@ -103,7 +107,7 @@ app.post('/records/:id/edit', (req, res) => {
 })
 
 // delete route 
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
