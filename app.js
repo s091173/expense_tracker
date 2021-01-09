@@ -111,6 +111,18 @@ app.post('/records/:id/delete', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// filter route
+app.get('/records/filter/:category', (req, res) => {
+  const category = req.params.category
+  return Record.find({ category: category })
+    .lean()
+    .then(records => {
+      const total = totalAmount(records)
+      res.render('index', { records, total })
+    })
+    .catch(error => console.log(error))
+})
+
 
 app.listen(3000, () => {
   console.log('The app is running on http://localhost:3000')
