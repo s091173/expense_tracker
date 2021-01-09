@@ -1,6 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+// 載入 Record Model
+const Record = require('./models/record')
+// 引用 totalAmount function
+const totalAmount = require('./totalAmount')
 
 const app = express()
 
@@ -26,7 +30,14 @@ app.set('view engine', 'hbs')
 
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .sort({ date: 'desc' })
+    .then(records => {
+      const total = totalAmount(records)
+      res.render('index', { records, total })
+    })
+    .catch(error => console.log(error))
 })
 
 app.listen(3000, () => {

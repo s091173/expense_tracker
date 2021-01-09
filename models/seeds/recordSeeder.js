@@ -23,7 +23,8 @@ db.once('open', () => {
       name: record.name,
       category: record.category,
       date: record.date,
-      amount: record.amount
+      amount: record.amount,
+      icon: record.icon
     })
   })
 

@@ -1,1 +1,55 @@
-<h2>Hello World / Index</h2>
+<div class="container my-5">
+
+  {{!-- 類別篩選 --}}
+  <div class="row justify-content-center mb-5">
+    <div class="dropdown col-8 col-sm-4 text-center">
+      <button class="btn btn-outline-secondary dropdown-toggle" style="width:10rem" type="button"
+        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        類別篩選
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">家居物業</a>
+        <a class="dropdown-item" href="#">交通出行</a>
+        <a class="dropdown-item" href="#">休閒娛樂</a>
+        <a class="dropdown-item" href="#">餐飲食品</a>
+        <a class="dropdown-item" href="#">其他</a>
+      </div>
+    </div>
+  </div>
+  {{!-- 總金額 --}}
+  <div class="row justify-content-center mb-3">
+    <p>總金額：</p>
+    <h1>{{total}}</h1>
+  </div>
+  {{!-- 項目內容 --}}
+  <div class="row justify-content-center">
+    <ul class="list-group list-group-flush col-10 col-sm-10 col-md-8">
+      {{#each records}}
+      <li class="list-group-item d-flex justify-content-between">
+
+        <div class="d-flex justify-content-between" style="width: 60%">
+
+          <div class="d-flex">
+            <i class="{{this.icon}} mr-5" style="font-size: 30px; color: #a9cccc; line-height: 80px; width: 15%"></i>
+            <div class="d-flex flex-column justify-content-center text-nowrap">
+              <p class="m-0" style="font-size: 20px">{{this.name}}</p>
+              <p class="m-0" style="font-size: 15px">{{this.date}}</p>
+            </div>
+          </div>
+
+          <span style="line-height: 80px; font-size: 20px">{{this.amount}}</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <a class="btn btn-outline-info" href="#">修改</a>
+          <form action="#" method="POST" onsubmit="return webConfirm('確定刪除這個項目嗎？')">
+            <button class="btn btn-outline-warning ml-2">刪除</button>
+          </form>
+        </div>
+
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+
+</div>

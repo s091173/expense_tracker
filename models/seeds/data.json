@@ -4,25 +4,29 @@
       "name": "教父牛排",
       "category": "餐飲食品",
       "date": "2021-01-31",
-      "amount": "4800"
+      "amount": "4800",
+      "icon": "fas fa-utensils"
     },
     {
-      "name": "電影: 神力女超人 1984",
+      "name": "神力女超人",
       "category": "休閒娛樂",
       "date": "2021-02-31",
-      "amount": "500"
+      "amount": "500",
+      "icon": "fas fa-grin-beam"
     },
     {
       "name": "Uber",
       "category": "交通出行",
       "date": "2021-03-31",
-      "amount": "429"
+      "amount": "429",
+      "icon": "fas fa-shuttle-van"
     },
     {
       "name": "爭鮮",
       "category": "餐飲食品",
       "date": "2021-04-31",
-      "amount": "600"
+      "amount": "600",
+      "icon": "fas fa-utensils"
     }
   ],
   "categories": [
