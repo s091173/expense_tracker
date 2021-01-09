@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const handlebars = require('handlebars')
 // 載入 Record Model
 const Record = require('./models/record')
 // 引用 totalAmount function
@@ -32,6 +33,15 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// register helper
+handlebars.registerHelper('ifEqual', function (category, targetCategory, options) {
+  if (category === targetCategory) {
+    return options.fn(this)
+  } else {
+    return options.inverse(this)
+  }
+})
 
 
 app.get('/', (req, res) => {
@@ -64,6 +74,34 @@ app.post('/records', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+// edit 頁面 
+app.get('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then(record => res.render('edit', { record }))
+    .catch(error => console.log(error))
+})
+
+// update route
+app.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  const { name, date, category, amount } = req.body
+  const icon = generateIcon(category)
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      record.icon = icon
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 
 app.listen(3000, () => {
   console.log('The app is running on http://localhost:3000')
