@@ -42,7 +42,7 @@
 
         <div class="d-flex align-items-center">
           <a class="btn btn-outline-info" href="/records/{{this._id}}/edit">修改</a>
-          <form action="#" method="POST" onsubmit="return webConfirm('確定刪除這個項目嗎？')">
+          <form action="/records/{{this._id}}/delete" method="POST" onsubmit="return webConfirm('確定刪除這個項目嗎？')">
             <button class="btn btn-outline-warning ml-2">刪除</button>
           </form>
         </div>
