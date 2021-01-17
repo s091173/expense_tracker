@@ -7,7 +7,7 @@ const Record = require('../../models/record')
 const totalAmount = require('../../totalAmount')
 
 // 首頁路由
-router.get('/', (req, res) => {
+router.get('/records', (req, res) => {
   Record.find()
     .lean()
     .sort({ date: 'desc' })

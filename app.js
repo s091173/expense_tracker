@@ -33,5 +33,5 @@ handlebars.registerHelper('ifEqual', function (category, targetCategory, options
 
 
 app.listen(PORT, () => {
-  console.log(`The app is running on http://localhost:${PORT}`)
+  console.log(`The app is running on http://localhost:${PORT}/records`)
 })

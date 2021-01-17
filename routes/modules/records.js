@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     amount,
     icon
   })
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect('/records'))
     .catch(error => console.log(error))
 })
 
@@ -48,7 +48,7 @@ router.put('/:id', (req, res) => {
       record.icon = icon
       return record.save()
     })
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect('/records'))
     .catch(error => console.log(error))
 })
 
@@ -57,7 +57,7 @@ router.delete('/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect('/records'))
     .catch(error => console.log(error))
 })
 
