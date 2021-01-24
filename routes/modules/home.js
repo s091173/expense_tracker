@@ -6,6 +6,11 @@ const Record = require('../../models/record')
 // 引用 totalAmount function 
 const totalAmount = require('../../totalAmount')
 
+// redirect route
+router.get('/', (req, res) => {
+  res.redirect(302, '/records')
+})
+
 // 首頁路由
 router.get('/records', (req, res) => {
   Record.find()
