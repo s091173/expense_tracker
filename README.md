@@ -18,7 +18,7 @@ git clone https://github.com/s091173/expense_tracker.git
 ```
 2. Enter the project file.
 ```
-cd restaurant_list
+cd expense-tracker
 ```
 3. Install npm.
 ```
