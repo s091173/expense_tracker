@@ -7,12 +7,16 @@ const home = require('./modules/home')
 const records = require('./modules/records')
 // 引入 users 模組
 const users = require('./modules/users')
+// 引用 auth 模組
+const auth = require('./modules/auth')
+
 // auth middleware
 const { authenticator } = require('../middleware/auth')
 
 
 router.use('/records', authenticator, records)
 router.use('/users', users)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 
 

@@ -5,6 +5,12 @@ const bodyParser = require('body-parser')
 const handlebars = require('handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // 引用路由器
 const routes = require('./routes')
 
@@ -12,7 +18,7 @@ const usePassport = require('./config/passport')
 
 const app = express()
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
 require('./config/mongoose')
 
@@ -22,7 +28,7 @@ app.set('view engine', 'hbs')
 
 // session
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
