@@ -21,6 +21,12 @@ const recordSchema = new Schema({
   icon: {
     type: String,
     required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId, // 定義 userId 這個項目為 ObjectId
+    ref: 'User', // 參考對象為 User Model
+    index: true,
+    required: true
   }
 })
 

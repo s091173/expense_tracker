@@ -12,6 +12,7 @@ router.get('/new', (req, res) => {
 
 // Create route
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const { name, date, category, amount } = req.body
   const icon = generateIcon(category)
   return Record.create({
@@ -19,7 +20,8 @@ router.post('/', (req, res) => {
     date,
     category,
     amount,
-    icon
+    icon,
+    userId
   })
     .then(() => res.redirect('/records'))
     .catch(error => console.log(error))
@@ -27,8 +29,9 @@ router.post('/', (req, res) => {
 
 // edit 頁面 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id // 確認此筆 record 屬於目前登入的 user
+  const _id = req.params.id // 找出 _id 一樣的 record
+  return Record.findOne({ _id, userId })
     .lean()
     .then(record => res.render('edit', { record }))
     .catch(error => console.log(error))
@@ -36,10 +39,11 @@ router.get('/:id/edit', (req, res) => {
 
 // update route
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   const { name, date, category, amount } = req.body
   const icon = generateIcon(category)
-  return Record.findById(id)
+  return Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.date = date
@@ -54,8 +58,9 @@ router.put('/:id', (req, res) => {
 
 // delete route 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/records'))
     .catch(error => console.log(error))

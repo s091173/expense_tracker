@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
 
 // 首頁路由
 router.get('/records', (req, res) => {
-  Record.find()
+  const userId = req.user._id
+  Record.find({ userId })
     .lean()
     .sort({ date: 'desc' })
     .then(records => {
