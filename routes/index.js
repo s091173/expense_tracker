@@ -7,9 +7,13 @@ const home = require('./modules/home')
 const records = require('./modules/records')
 // 引入 users 模組
 const users = require('./modules/users')
+// auth middleware
+const { authenticator } = require('../middleware/auth')
 
-router.use('/', home)
-router.use('/records', records)
+
+router.use('/records', authenticator, records)
 router.use('/users', users)
+router.use('/', authenticator, home)
+
 
 module.exports = router
