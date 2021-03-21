@@ -13,9 +13,10 @@ router.get('/new', (req, res) => {
 // Create route
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const { name, date, category, amount } = req.body
+  const { merchant, name, date, category, amount } = req.body
   const icon = generateIcon(category)
   return Record.create({
+    merchant,
     name,
     date,
     category,
@@ -41,10 +42,11 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const { name, date, category, amount } = req.body
+  const { merchant, name, date, category, amount } = req.body
   const icon = generateIcon(category)
   return Record.findOne({ _id, userId })
     .then(record => {
+      record.merchant = merchant
       record.name = name
       record.date = date
       record.category = category
