@@ -45,6 +45,7 @@ db.once('open', () => {
             { length: 2 },
             (v, i) =>
               Record.create({
+                merchant: recordData[i + (index * 2)].merchant,
                 name: recordData[i + (index * 2)].name,
                 category: recordData[i + (index * 2)].category,
                 date: recordData[i + (index * 2)].date,
